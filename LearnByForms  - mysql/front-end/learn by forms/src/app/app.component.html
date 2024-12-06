@@ -1,0 +1,12 @@
+<div class="row m-0 header_row" *ngIf="showHeader">
+    <div class="col-12 ">
+      <app-header  ></app-header>
+    </div>
+  </div>
+  <div class="row m-0 p-0">
+      <div class="content">
+        <router-outlet (activate)="modifyHeader()"></router-outlet>
+      </div>
+          
+    </div>
+ 

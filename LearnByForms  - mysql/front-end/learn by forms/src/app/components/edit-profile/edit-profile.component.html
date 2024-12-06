@@ -1,0 +1,291 @@
+<div class="row m-0 p-0">
+    <div class="col-12 p-0">
+        <div class="profile_tab">
+            <div class="form_user">
+                <form  [formGroup]="EditForm" >
+                    <div class="row m-0">
+                        <div class="col-4">
+                            <div class="img_box">
+                            <input   hidden id="input-file-id"  type="file" #uploader
+                                     (change)="onFileChange($event)" accept='image/*' name="uploadedImage"/>
+                            <div class="upload" (click)="uploader.click()"  *ngIf="!uploadFlag && (!editData || !editData.image)">
+                                <i class="fa fa-user user_img"></i><i class="fa fa-pencil edit_icon"></i></div>
+        
+                            <div class="upload" (click)="uploader.click()"  *ngIf="uploadFlag || (editData && editData.image)">
+                                <img [src]="image" class="upload_img"> <i class="fa fa-pencil edit_icon"></i></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row m-0 form_page">
+                        <div class="col-4">
+                            <div class="form-group">
+                                        <label for="name" class="user">Name </label>
+                                        <input type="name" formControlName="name" class="form-control" id="name"
+                                            name="name">
+                                            <div *ngIf="submitted && f.name.errors" class="error pos_absolute">
+                                                <div *ngIf="f.name.errors.required"> Name  is required</div>
+                                            </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                        <label for="username" class="user">Username</label>
+                                        <input type="username" formControlName="username" class="form-control" id="username"
+                                            name="username">
+                                            <div *ngIf="submitted && f.username.errors" class="error pos_absolute">
+                                                <div *ngIf="f.username.errors.required"> Username  is required</div>
+                                            </div>
+                                            <div *ngIf="errorMsgFlag" class="error pos_absolute error_text">
+                                                {{errorMsg}}
+                                            </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="email" class="user">Email </label>
+                                        <input type="email" [attr.disabled]="true" formControlName="email" class="form-control" id="email"
+                                            name="email">
+                                            <!-- <div *ngIf="submitted && f.email.errors" class="error pos_absolute">
+                                                <div *ngIf="f.email.errors.required"> Email id is required</div>
+                                                <div *ngIf="f.email.errors.email">Valid email id is required</div>
+                                            </div> -->
+                                    </div>
+                
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="location" class="user">Location </label>
+                                <input type="location" formControlName="location" class="form-control" id="location"
+                                    name="location">
+                                    <!-- <div *ngIf="submitted && f.location.errors" class="error pos_absolute">
+                                        <div *ngIf="f.location.errors.required"> Location  is required</div>
+                                    </div> -->
+                            </div>
+        
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="roles" class="user">Roles </label>
+                                <select formControlName="roles" class="form-select dropbtn  " >
+                                    <option >Reviewer</option>
+                                    <option >Creator</option>
+                                    <option >User</option>
+                                  </select>
+                            </div>
+        
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="about" class="user">About me </label>
+                                <input type="about"  formControlName="about" class="form-control" id="about"
+                                    name="about">
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="profDesc">Profile Description</label>
+                                <textarea formControlName="profDesc" class="form-control" id="profDesc" ></textarea>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row m-0 ">
+                        <div class="col-4">
+                            <div class="form-check">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Setup your links
+                                </label>
+                                <input class="form-check-input" 
+                                  type="checkbox" formControlName="setlink"
+                                  (change) ="IsCheckedCheck($event , 1)"
+                                />
+                            </div>
+                        </div>
+                    </div>  
+                    <div class=" row m-0 link_row " *ngIf="showLinks">
+                        <div class="col-12">
+                            <div class="link_box">
+                                <div class="row m-0" >
+                        
+                                    <div class="col-5">
+                                        <div class="form-group">
+                                            <label for="links">Link</label>
+                                            <input type="link" formControlName="link"   class="form-control" id="link"
+                                                name="link">
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="form-group">
+                                            <label for="linkdesc">Description</label>
+                                            <input type="linkdesc" formControlName="linkdesc"   class="form-control" id="linkdesc"
+                                                name="linkdesc">
+                                        </div>
+                                    </div>
+                                    <div class="col-2 text-end">
+                                        <button class="btn addbtn" (click)="AddLinks()">Add Link</button>
+                                    </div>
+                                </div>
+                                <div class="row m-0 link_row" *ngIf="LinksArray.length > 0">
+                                    <div class="col-4" *ngFor="let link of LinksArray">
+                                            <div class="row m-0 link_sec"  >
+                                                <div class="col-8 p-0">
+                                                        <a class="link_val" href="{{link.link}}" target="_blank">{{link.desc}}</a>                                            
+                                                 </div>
+                                                 <div class="col-2 p-0">
+                                                     <a class="remove" (click)="RemoveLinks(link.desc)">Remove</a>
+                                                 </div>
+                                            </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                   
+                    
+                    <div class="row m-0 ">
+                        <div class="col-4">
+                            <div class="form-check">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Setup your projects
+                                </label>
+                                <input class="form-check-input" formControlName="setproj"
+                                  type="checkbox"  (change) ="IsCheckedCheck($event , 2)"
+                                />
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="row m-0 link_row" *ngIf="showProjs">
+                        <div class="col-12">
+                            <div class="link_box">
+                                <div class="row m-0">
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label for="title">Title</label>
+                                            <input type="title" formControlName="title"   class="form-control" id="title"
+                                                name="title">
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <label for="goal">Goal</label>
+                                            <input type="goal" formControlName="goal"   class="form-control" id="goal"
+                                                name="goal">
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <label for="pot">Pot</label>
+                                            <input type="pot" formControlName="pot"   class="form-control" id="pot"
+                                                name="pot">
+                                        </div>
+                                    </div>
+                                    <div class="col-2 text-end">
+                                        <button class="btn addbtn" (click)="AddProjs()">Add Project</button>
+                                    </div>
+                                </div>
+                                <div class="row m-0 link_row" *ngIf="ProjArray.length > 0">
+                                    <div class="col-4" *ngFor="let proj of ProjArray">
+                                            <div class="row m-0 link_sec"  >
+                                                <div class="col-8 p-0">
+                                                        <p class=" proj_text" >{{proj.title}}</p>                                            
+                                                 </div>
+                                                 <div class="col-2 p-0">
+                                                    <a class="remove" (click)="RemoveProj(proj.title)">Remove</a>
+                                                 </div>
+                                            </div>
+                                    </div>
+                                   
+                                </div>
+                                <!-- <div class="row m-0 link_row" *ngIf="ProjArray.length > 0">
+                                    <div class="col-3" *ngFor="let proj of ProjArray">
+                                        <div class="proj_box">
+                                            <h3>{{proj.title}}</h3>
+                                            <p class="proj_text">Goal : {{proj.goal}}</p>
+                                            <p class="proj_text">Pot : {{proj.pot}}</p>
+                                            <a class="remove" (click)="RemoveProj(proj.title)">Remove</a>
+                                        </div>
+                                        
+                                    </div>
+                                   
+                                </div> -->
+                            </div>
+                        </div>
+                       
+                    </div>
+                    
+                    <div class="row m-0 ">
+                        <div class="col-4">
+                            <div class="form-check">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Setup Collaborative
+                                </label>
+                                <input class="form-check-input" formControlName="setcollab" 
+                                  type="checkbox" (change) ="IsCheckedCheck($event , 3)"  
+                                />
+                            </div>
+                        </div>
+                    </div>  
+                    <!-- [checked]="(EditForm.value.setcollab === 'true') ? true : false" -->
+                    <div class="row m-0 link_row" *ngIf="showCollabs">
+                        <div class="col-12">
+                                <div class="link_box">
+                                    <div class="row m-0">
+                                        <div class="col-5">
+                                            <div class="form-group">
+                                                <label for="collabtitle"> Title</label>
+                                                <input type="collabtitle" formControlName="collabtitle"   class="form-control" id="collabtitle"
+                                                    name="collabtitle">
+                                            </div>
+                                        </div>
+                                        <div class="col-5">
+                                            <div class="form-group">
+                                                <label for="collabdesc">Description</label>
+                                                <input type="collabdesc" formControlName="collabdesc"   class="form-control" id="collabdesc"
+                                                    name="collabdesc">
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="col-2 text-end">
+                                            <button class="btn addbtn" (click)="AddCollab()">Add Collaborative</button>
+                                        </div>
+                                    </div>
+                                    <div class="row m-0 link_row" *ngIf="CollabArray.length > 0">
+                                        <div class="col-4" *ngFor="let proj of CollabArray">
+                                                <div class="row m-0 link_sec"  >
+                                                    <div class="col-8 p-0">
+                                                        <p class=" proj_text" >{{proj.title}}</p>                                               
+                                                     </div>
+                                                     <div class="col-2 p-0">
+                                                         <a class="remove" (click)="RemoveCollab(proj.title)">Remove</a>
+                                                     </div>
+                                                </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                        </div>
+                       
+                    </div>
+                    
+                   
+                    <div class="row m-0">
+                        <div class="col-3">
+                            <button class="btn edit_btn" (click)="onSubmit()"> Save</button>
+                        </div>
+                    </div>    
+                        
+                        
+                   
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>

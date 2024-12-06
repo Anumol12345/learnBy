@@ -1,0 +1,91 @@
+<div class="home_page ">
+    <div class="row m-0">
+        <div class="home_logo">
+            <div class="row justify-content-center">
+                <div class="col-5">
+                    <div class="input-group ">
+                        <input type="search" id="form1" class="form-control border-0" placeholder="Search Our Forms Library"/>
+                        <span ><i class="search_icon fa fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+         </div>    
+    </div>
+    <div class="home_content ">
+        <h1 class="top_head">Top Categories</h1>
+        <div class="row m-0">
+            <div class="col-3 text-center" *ngFor="let item of  Home_data">
+                <div class="home_box">
+                    <img class="home_img " src = {{item.url}} >
+                    <p class="home_name">{{item.name}}</p>
+                    <p class="home_desc">{{item.description}}</p>
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+    <div class="home_contents ">
+        <h1 class="top_head">Top Forms</h1>
+       
+        <ngb-carousel (slide)="onSlideChanged($event) ">
+            <ng-template ngbSlide *ngFor="let data of GroupData;let i = index" [id]="'slideId_' + i">
+                <div class="row m-0">
+                    <div class="col-2" *ngFor="let item of data">
+                        <div class="home_carousel">
+                            <div class="carousel-inner">
+                                <iframe height =170 class="frams_img" [src] ="getSanitizedURL(item.url)"  allowfullscreen ></iframe>
+                            </div>
+                            <div class="carousel-caption">
+                                <p class="mb-0">{{ item.created_by }}</p>
+                                <h5 class="mb-0">{{ item.name }}</h5>
+                                <p  class="mb-0">{{ item.description }}</p>
+                                <p  class="mb-0">{{ item.no_of_downloads }}</p>
+                              </div>
+                              <!-- <a class="carousel-control-prev slick-prev" type="button" data-coreui-target="#carouselExampleControls" data-coreui-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                              </a>
+                              <a class="carousel-control-next" type="button" data-coreui-target="#carouselExampleControls" data-coreui-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                              </a> -->
+                             
+                    </div>
+                </div>
+            
+            </div>
+            </ng-template>
+          </ngb-carousel>
+                   
+          
+    </div>
+    <div class="Rev_content " *ngIf="Review_data">
+        <h1 class="top_head">Reviewers</h1>
+        <div class="row m-0">
+            <div class="col-3 text-center" *ngFor="let item of  Review_data">
+                <div class="review_box" (click)="ReviewPage(item._id , item.name)">
+                    <i *ngIf="!item.image " class="fa fa-user userimg"></i> 
+                    <img *ngIf="item.image " class="rev_img " src = {{item.image}} >
+                    <p class="home_name">{{item.name}}</p>
+                    <div class="row m-0">
+                        <div class="col-4">
+                            <p class="rate m-0">400</p>
+                            <p class="home_desc m-0">Likes</p>
+                        </div>
+                        
+                        <div class="col-4">
+                            <p class="rate m-0">466</p>
+                            <p class="home_desc m-0">Comments</p>
+                        </div>
+                        <div class="col-4">
+                            <p class="rate m-0">4.6</p>
+                            <p class="home_desc m-0">Rating</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+</div>

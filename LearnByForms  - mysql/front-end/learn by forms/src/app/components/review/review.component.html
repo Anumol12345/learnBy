@@ -1,0 +1,114 @@
+<div class="row m-0 p-0">
+    
+    <div class="col-12 p-0">
+        <div class="profile_tab">
+            <div class="row m-0">
+                <div class="col-3">
+                    <div class="img_box">
+                        <i *ngIf="!profileData || !profileData.image" class="fa fa-user user_img"></i> 
+                        <img *ngIf="profileData && profileData.image"  class="profile_pic"  [src] = "profileData.image" >
+                    </div>
+                    
+                    
+                </div>
+                <div class="col-9 ">
+                    <div class="name_data">
+                        <p class="user_name ">{{userName}}</p>
+                        <div class="row m-0">
+                            <div class="col-3 p-0">
+                                <!-- <p *ngIf="!profileData || !profileData.location"><i class="fa fa-map-marker map_icon" ></i>Add location</p>  -->
+                                
+                                <p *ngIf="profileData && profileData.location"><i class="fa fa-map-marker map_icon " ></i>{{profileData.location}}</p>
+                            </div>
+                            <div class="col-6 p-0">
+                                <p *ngIf="!profileData"><i class="fa fa-envelope map_icon" ></i>{{userId}}</p> 
+                                <p *ngIf="profileData"><i class="fa fa-envelope map_icon " ></i>{{profileData.email}}</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                   
+                </div>
+            </div>
+            <div class="row  m-0 about_row">
+                <div class="col-3">
+                    <!-- <p *ngIf="!profileData">Add Role</p>  -->
+                    <p *ngIf="profileData && profileData.role">{{profileData.role}}</p>
+                    <!-- <p *ngIf="!profileData.about">{{profileData.about}}</p> -->
+                </div>
+                <div class="col-6">
+                    <!-- <p *ngIf="!profileData">Add about me</p>  -->
+                    <p *ngIf="profileData && profileData.about">{{profileData.about}}</p>
+                    <!-- <p *ngIf="!profileData.about">{{profileData.about}}</p> -->
+                </div>
+              
+                
+            </div>
+            <div class="row m-0 about_row">
+                <div class="col-2 border_class">
+                    <div class="row">
+                        <p class="rate">454</p>
+                    </div>
+                    <div class="row">
+                        <p><i class="fa fa-comments prof_icon"></i>Comments</p>
+                    </div>
+                </div>
+                <div class="col-2 border_class">
+                    <div class="row">
+                        <p class="rate">454</p>
+                    </div>
+                    <div class="row">
+                        <p><i class="fa fa-thumbs-up prof_icon"></i>Likes</p>
+                    </div>
+                </div>
+                <div class="col-2 border_class">
+                    <div class="row">
+                        <p class="rate">454</p>
+                    </div>
+                    <div class="row">
+                        <p><i class="fa fa-check-square-o prof_icon"></i>Approvals</p>
+                    </div>
+                </div>
+                <div class="col-2 border_class">
+                    <div class="row">
+                        <p class="rate">4.5</p>
+                    </div>
+                    <div class="row">
+                        <p><i class="fa fa-star-half-full prof_icon"></i>Rating</p>
+                    </div>
+                </div>
+                <div class="col-2 border_class" >
+                    <div class="row">
+                        <p class="rate">130</p>
+                    </div>
+                    <div class="row">
+                        <p><i class="fa fa-calendar-o prof_icon"></i>Days in service</p>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="row">
+                        <p class="rate">454</p>
+                    </div>
+                    <div class="row">
+                        <p><i class="fa fa-certificate prof_icon"></i>Tokens</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 link_row" *ngIf="profilelinks">
+                <div class="col-12">
+                    <p class="link_head">Links</p>
+                    <div class="link_box">
+                        <div class="row m-0"  *ngFor="let link of profilelinks">
+                            <div class="col-12">
+                                    <a class="link_val" href="{{link}}" target="_blank">{{link}}</a>
+                             </div>
+                             
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<div class="dashboard  ">
+   <div class="row header m-0">
+    <div class="col-8">
+        <h1 class="head_text">{{name}}</h1>
+        <p class="head_txt" *ngIf="profileData && profileData.about">{{profileData.about}}</p>
+    </div>
+   </div>
+    <div class="row m-0 justify-content-end image_row">
+        <div class="col-2 text-end">
+            <h3 class="head_text mt-4" *ngIf="profileData && profileData.username">{{profileData.username}}</h3>
+            
+        </div>
+        <div class="col-2 ">
+            <div class="img_box">
+                <i *ngIf="!profileData || !profileData.image" class="fa fa-user user_img"></i> 
+                <img *ngIf="profileData && profileData.image"  class="profile_pic"  [src] = "profileData.image" >
+            </div>
+        </div>
+    </div>
+  <div class="content_show" *ngIf="profileData">
+    <div class="row m-0 justify-content-center">
+        <div class="col-4 " [style.text-align]="(profileData.setproj === false && profileData.setcollab === false) ? 'center' : 'left'"
+        *ngIf="profileData.setlink === true">
+            <h4>FIND ME HERE</h4>
+            <div *ngFor="let link of profileData.links ; let even = even; let odd = odd"> 
+                <div class="link_row" [ngClass]="{ even: even, odd: odd }">
+                    <a class="link_val" href="{{link.link}}" target="_blank">{{link.desc}}</a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-8 "  [style.text-align]="(profileData.setlink === false) ? 'center' : 'left'"
+        *ngIf="profileData.setproj === true || profileData.setcollab === true">
+            <div class="row" *ngIf="profileData.setproj === true">
+                <h4 class="head">FUND MY PROJECTS</h4>
+                <div class="row m-0 " [style.justify-content]="(profileData.setlink === false) ? 'center' : 'start'">
+                    <div class="col-3" *ngFor="let link of profileData.projects">
+                        <div class="proj_cards">
+                            <p class="title">{{link.title}}</p>
+                            <p class="text">Goal : ${{link.goal}}</p>
+                            <p class="text">Current Pot : ${{link.pot}}</p>
+                            <button class="btn sup_btn">Support</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row " *ngIf="profileData.setcollab === true">
+                <h4 class="head_coll">COLLABORATE WITH ME</h4>
+                <div class="row m-0 " [style.justify-content]="(profileData.setlink === false) ? 'center' : 'start'">
+                    <div class="col-4 " *ngFor="let link of profileData.Collabs">
+                        <div class="collab_cards">
+                            <p class="title">{{link.title}}</p>
+                            <p class="text">{{link.desc}}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  
+       
+</div>
+<div class="row footer m-0 ">
+    <div class="col-2 text-center">
+        <h2 class="m-0"><i class="fa fa-briefcase icon"></i>200</h2>
+        <p class="m-0">completed projects</p>
+    </div>
+    <div class="col-2 text-center">
+        <h2 class="m-0"><i class="fa  fa-clock-o icon"></i>200</h2>
+        <p class="m-0">Collaborating hours</p>
+    </div>
+    <div class="col-2 text-center">
+        <h2 class="m-0"><i class="fa  fa-clock-o icon"></i>200</h2>
+        <p class="m-0">Happy Collaborations</p>
+    </div>
+   </div>

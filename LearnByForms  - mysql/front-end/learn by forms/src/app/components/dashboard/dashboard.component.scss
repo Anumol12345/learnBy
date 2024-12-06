@@ -1,0 +1,119 @@
+.header{
+    min-height: 120px;
+    padding: 20px 0 0 50px;
+    
+    background: linear-gradient(90deg,#627a7a 0%  ,  #85adad 30%,#94b8b8 50%,  #009999 70%, #cc6699 100%);
+}
+.footer{
+    height: 80px;
+    padding: 10px;
+    color: #fff;
+    justify-content: space-evenly;
+    background: linear-gradient(90deg,#627a7a 0%  ,  #85adad 30%,#94b8b8 50%,  #009999 70%, #cc6699 100%);
+}
+.dashboard
+{
+    min-height: 100vh;
+}
+.content_show{
+    padding: 0 20px;
+}
+.profile_pic{
+    border-radius: 20px;
+width: 100%;
+border: 1px solid #006699;
+height: 100%;}
+.user_img{
+    font-size: 100px;
+    border: 1px solid #acadad;
+    border-radius: 20px;
+    padding: 16px 32px 20px 32px;
+    color: #fff;
+    background: #dedede;
+   
+}  
+.image_row
+{
+    margin-top: -70px !important;
+}
+.link_val{
+    text-decoration: none;
+    color: #fff;
+    //background: red;
+    
+}
+.img_box{
+    width: 140px;
+    height: 140px;
+}
+.link_row{
+   // width: 85%;
+    padding: 7px 10px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 6px #00000029;
+    text-align: center;
+    margin-top: 20px;
+    min-height: 42px;
+}
+.even{
+    background-color: #009999;}
+.odd{
+    background-color: #ff8080;
+}
+.head_text{
+    color: #fff;
+    margin-bottom: 0;
+}
+.head_txt{
+    color: #fff;
+}
+.proj_cards{
+    padding: 2px 10px 10px 10px;
+    border-radius: 6px;
+    //box-shadow: 0px 0px 6px #00000029;
+    text-align: center;
+    margin: 10px 0 10px 0;
+    box-shadow: 0 0 6px #dedede;
+    min-height: 70px;
+}
+.collab_cards{
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    margin: 10px 0 10px 0;
+    /* border: 2px solid #009999; */
+    min-height: 70px;
+    background: #669999;
+    color: #fff;
+}
+.sup_btn{
+    border-radius: 25px;
+    background-color: #006699;
+    color: #fff;
+    height: 30px;
+    /* padding: initial; */
+    width: 140px;
+    margin-top: 10px;
+    padding: 0px;
+    font-size: 14px
+}
+.icon
+{
+margin-right: 15px;
+}
+.head
+{
+    padding: 2px 21px;
+}
+.head_coll{
+    padding: 25px 21px 0 22px;
+}
+.title {
+  font-size:20px;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+.text{
+    font-size: 16px;
+  margin-bottom: 0px;
+}

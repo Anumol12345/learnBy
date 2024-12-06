@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-dark header_nav fixed-top">
+    <div class="navbar-brand">
+        <p class="form_head">Forms.Wiki</p>
+        <!-- <img src="../../../assets/images/forms_logo.png">
+        <a class="logo" href="https://www.conectier.com/" target="_blank">Conectier</a> -->
+    </div>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+        class="navbar-toggler togglermenu" data-target="#navbar1" data-toggle="collapse" (click)="toggleNavbar()"
+        type="button"><span class="navbar-toggler-icon"></span></button>
+
+    <div class="collapse navbar-collapse" [ngClass]="{'show': navbarOpen}" id="navbar1">
+
+
+        <ul class="navbar-nav ">
+            <li  (click)="navbarOpen=false" >
+                <a class="nav_link" routerLink="/home" routerLinkActive="active-route" >
+                    Home
+                </a>
+            </li>
+            <li  (click)="navbarOpen=false" *ngIf="LoginedUser">
+                <a class="nav_link" routerLink="/dashboard" routerLinkActive="active-route" >
+                    Dashboard
+                </a>
+            </li>
+            <li (click)="navbarOpen=false" *ngIf="!LoginedUser">
+                <a class="nav_link" routerLink="/login" routerLinkActive="active-route" >
+                    Sign In
+                </a>
+            </li>
+            <li  ngbDropdown *ngIf="LoginedUser"  class="dropdown">
+                <a class=" nav_link" ngbDropdownToggle>
+                    {{name}} 
+                    <i class="fa fa-user-circle user_icon" *ngIf="!profileImage"></i>
+                    <img [src]="profileImage" class="user_img" *ngIf="profileImage">
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu ">
+                        <button ngbDropdownItem  (click)="navbarOpen=false"  routerLink="/profile"> Profile</button>
+                        <button ngbDropdownItem  (click)="Logout()"> Logout</button>
+                       
+                    </div>
+                </a>
+
+            </li>
+            <!-- <li (click)="navbarOpen=false" *ngIf="LoginedUser">
+                <a class="nav_link"  routerLinkActive="active-route" >
+                    {{userName}}
+                </a>
+            </li>
+            <li (click)="navbarOpen=false" *ngIf="LoginedUser">
+                <a class="nav_link" (click)="Logout()" routerLinkActive="active-route" >
+                    Logout
+                </a>
+            </li> -->
+            <li  (click)="navbarOpen=false" *ngIf="!LoginedUser">
+                <a class="nav_link" routerLink="/contact" routerLinkActive="active-route" >
+                  Contact-Us
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
