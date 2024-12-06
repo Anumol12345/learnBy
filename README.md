@@ -1,24 +1,25 @@
-Learn By Forms
-A full-stack web application built with Angular for the frontend, Node.js for the backend, and MySQL for the database.
 
-Features
-User authentication and authorization.
-RESTful API for CRUD operations.
-Responsive and dynamic frontend with Angular.
-MySQL database for data persistence.
-Error handling and input validation.
-Token-based authentication (e.g., JWT).
+**Learn By Forms**  
+A full-stack web application built with Angular for the frontend, Node.js for the backend, and MySQL for the database.  
 
-Technologies Used
-Frontend:
-Angular
-Angular Material (optional)
-Bootstrap (optional)
-Backend:
-Node.js
-Express.js
-Database:
-MySQL
+**Features**    
+User authentication and authorization.  
+RESTful API for CRUD operations.  
+Responsive and dynamic frontend with Angular.  
+MySQL database for data persistence.  
+Error handling and input validation.  
+Token-based authentication (e.g., JWT).  
+
+**Technologies Used**  
+Frontend:  
+Angular  
+Angular Material (optional)  
+Bootstrap (optional)  
+Backend:  
+Node.js  
+Express.js  
+Database:    
+MySQL  
 
 Prerequisites
 Ensure the following are installed on your machine:
